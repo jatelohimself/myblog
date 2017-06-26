@@ -1,5 +1,6 @@
 <h2><?= $title?></h2>
 <?php echo validation_errors();?>
+
 <?php echo form_open_multipart('posts/create');?><!--form open multipart makes it possible to have image upload fields in the form-->
 <form>
     <div class="form-group">
@@ -20,8 +21,7 @@
     </div>
     <div class="form-group">
         <label>Upload Image</label>
-        <input type="file" name="post-image">
-    </div>
+        <input type="file" name="userfile" size="20">
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>

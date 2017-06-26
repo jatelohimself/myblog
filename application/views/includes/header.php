@@ -1,9 +1,9 @@
 <html>
 <head>
     <title>myBlog</title>
-    <link rel="stylesheet" href="<?php echo base_url();?>/application/assets/css/bootsrap.min.css ">
-    <link rel="stylesheet" href="<?php echo base_url();?>/application/assets/css/style.css">
-    <script src="<?php echo base_url();?>/application/assets/plugins/ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/bootsrap.min.css ">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/style.css">
+    <script src="<?php echo base_url();?>/assets/plugins/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
