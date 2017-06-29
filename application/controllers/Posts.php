@@ -88,16 +88,6 @@ class Posts extends CI_Controller{
         redirect('posts');
     }
 
-    public function edit_categories(){
-        $data['categories'] = $this->post_model->get_categories();
-        $data['title']= 'Add Category';
 
-
-        $this->load->view('includes/header');
-        $this->load->view('posts/edit_categories', $data);
-        $this->load->view('includes/footer');
-
-        $this->post_model->edit_category();
-    }
 
 }

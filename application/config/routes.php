@@ -51,9 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['posts/update']= 'posts/update';
 $route['posts/create']= 'posts/create';
-$route['posts/edit_categories']= 'posts/edit_categories';
 $route['posts/(:any)'] = 'posts/view/$1';//view a single post
 $route['posts']= 'posts/index';
+
+$route['categories/create']='categories/create';
+$route['categories/posts/(:any)'] = 'categories/posts/$1';
+$route['categories/categories']='categories/categories';
+$route['categories/edit_categories']='categories/edit_categories';
+
 $route['default_controller'] = 'pages/view';
 $route['(:any)'] = 'pages/view/$1'; //:any means pick anything  .../$1 means any page in the subdir
 $route['404_override'] = '';

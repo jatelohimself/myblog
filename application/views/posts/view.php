@@ -11,3 +11,17 @@
 <?php echo form_open('/posts/delete/'.$post['id']);?>
     <input type="submit" value="delete" class="btn-danger">
 </form>
+<hr>
+<h3>Add Comments</h3>
+<?php echo form_open('comments/create/'.$post['id']);?>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="email" class="form-control">
+        <label>Email</label>
+        <input type="text" name="name" class="form-control">
+        <label>Body</label>
+        <textarea name="name" class="form-control"></textarea>
+    </div>
+    <input type="hidden" name="slug" value="<?php echo $post['slug'];?>">
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

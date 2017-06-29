@@ -23,6 +23,7 @@
                 <li ><a href="<?php echo base_url();?>">Home </a></li>
                 <li ><a href="<?php echo base_url();?>about">About</a></li>
                 <li ><a href="<?php echo base_url();?>posts">Blog </a></li>
+                <li ><a href="<?php echo base_url();?>categories/get_categories">Categories</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -32,6 +33,7 @@
             </form>
             <ul class="nav navbar-right navbar-nav" style=>
                 <li ><a href="<?php echo base_url();?>posts/create">Create Post</a></li>
+                <li ><a href="<?php echo base_url();?>categories/create">Create Categories</a></li>
             </ul>
         </div>
     </div>
