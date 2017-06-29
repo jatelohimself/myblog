@@ -31,7 +31,9 @@
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
-            <ul class="nav navbar-right navbar-nav" style=>
+            <ul class="nav navbar-right navbar-nav">
+                <li ><a href="<?php echo base_url();?>users/register">Register</a></li>
+                <li ><a href="<?php echo base_url();?>users/login">Login</a></li>
                 <li ><a href="<?php echo base_url();?>posts/create">Create Post</a></li>
                 <li ><a href="<?php echo base_url();?>categories/create">Create Categories</a></li>
             </ul>
@@ -39,3 +41,13 @@
     </div>
 </nav>
 <div  class="container">
+    <!-- FLASH MESSAGES-->
+    <?php if($this->session->flashdata('user_registered')):?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>';?>
+    <?php endif;?>
+    <?php if($this->session->flashdata('post_created')):?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_created').'</p>';?>
+    <?php endif;?>
+    <?php if($this->session->flashdata('post_deleted_success')):?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_deleted_success').'</p>';?>
+    <?php endif;?>

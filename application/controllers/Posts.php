@@ -62,6 +62,8 @@ class Posts extends CI_Controller{
             }
 
             $this->post_model->create_post($post_image);
+            //set message
+            $this->session->set_flashdata('post_created', 'Youve created the post awesome');
             redirect('posts');
         }
     }

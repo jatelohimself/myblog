@@ -54,6 +54,8 @@ $route['posts/create']= 'posts/create';
 $route['posts/(:any)'] = 'posts/view/$1';//view a single post
 $route['posts']= 'posts/index';
 
+$route['users/register']= 'users/register';
+
 $route['categories/create']='categories/create';
 $route['categories/posts/(:any)'] = 'categories/posts/$1';
 $route['categories/categories']='categories/categories';
