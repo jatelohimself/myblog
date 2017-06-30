@@ -2,9 +2,16 @@
 class Posts extends CI_Controller{
     public function index($page = 'index'){
 
+        //pagination config
+        $config['base_url'] = base_url($offset= 0). '/posts/index';
+        $config['total_rows']= $this->db->count_all('posts');//number of all posts in our db for pagination
+        $config['per_page'] = 3;
+        $config['uri_segment'] = 3;//segmentation in the url host/x/y/3
+        $config['attributes'] = array('class' => 'pagination-links');
+
         $data['title']= 'Latest Posts';
 
-        $data['posts']= $this->post_model->get_posts();
+        $data['posts']= $this->post_model->get_posts(FALSE, $config['per_page'] = 3, $offset);
 
       //  print_r($data);
 
@@ -29,6 +36,10 @@ class Posts extends CI_Controller{
 
     }
     public function create(){
+        //check login
+        if(!$this->session->userdata('logged_in')){
+            redirect('/posts/');
+        }
         $data['title'] = 'Create Post';
         $data['categories'] = $this->post_model->get_categories();
 
@@ -69,12 +80,27 @@ class Posts extends CI_Controller{
     }
 
     public function delete($id){
+        //check login
+        if(!$this->session->userdata('logged_in')){
+            redirect('/posts/');
+        }
         $this->post_model->delete_post($id);
         redirect('posts');
 
     }
     public function edit($slug){
+        //check login
+        if(!$this->session->userdata('logged_in')){
+            redirect('/posts/');
+        }
+
         $data['post'] = $this->post_model->get_posts($slug);
+
+        //check if its the users post,if false it redirects to post
+        if($this->session->userdata('user_id')!= $this->post_model->get_posts($slug)){
+            redirect('posts');
+        }
+
         $data['categories'] = $this->post_model->get_categories();
 
         if(empty($data['post'])){
@@ -88,6 +114,10 @@ class Posts extends CI_Controller{
 
     }
     public function update(){
+        //check login
+        if(!$this->session->userdata('logged_in')){
+            redirect('/posts/');
+        }
         $this->post_model->update_post();
         redirect('posts');
     }

@@ -32,10 +32,16 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-right navbar-nav">
-                <li ><a href="<?php echo base_url();?>users/register">Register</a></li>
-                <li ><a href="<?php echo base_url();?>users/login">Login</a></li>
-                <li ><a href="<?php echo base_url();?>posts/create">Create Post</a></li>
-                <li ><a href="<?php echo base_url();?>categories/create">Create Categories</a></li>
+
+                <?php if(!$this->session->userdata('logged_in')):?>
+                    <li ><a href="<?php echo base_url();?>users/register">Register</a></li>
+                    <li ><a href="<?php echo base_url();?>users/login">Login</a></li>
+                <?php endif; ?>
+                <?php if($this->session->userdata('logged_in')):?>
+                    <li ><a href="<?php echo base_url();?>users/logout">Logout</a></li>
+                    <li ><a href="<?php echo base_url();?>posts/create">Create Post</a></li>
+                    <li ><a href="<?php echo base_url();?>categories/create">Create Categories</a></li>
+                <?php endif;?>
             </ul>
         </div>
     </div>
@@ -50,4 +56,16 @@
     <?php endif;?>
     <?php if($this->session->flashdata('post_deleted_success')):?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_deleted_success').'</p>';?>
+    <?php endif;?>
+    <?php if($this->session->flashdata('failed_login')):?>
+        <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('failed_login').'</p>';?>
+    <?php endif;?>
+    <?php if($this->session->flashdata('post_deleted_success')):?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_deleted_success').'</p>';?>
+    <?php endif;?>
+    <?php if($this->session->flashdata('user_logged_in')):?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_logged_in').'</p>';?>
+    <?php endif;?>
+    <?php if($this->session->flashdata('logout_success')):?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('logout_success').'</p>';?>
     <?php endif;?>

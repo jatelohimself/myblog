@@ -1,6 +1,10 @@
 <?php
 class Categories extends CI_Controller{
     public function create(){
+        //check login
+        if(!$this->session->userdata('logged_in')){
+            redirect('/posts/');
+        }
         $data['title']= 'Create Category';
 
         $this->form_validation->set_rules('name','Name', 'required');
@@ -17,6 +21,10 @@ class Categories extends CI_Controller{
        }
     }
     public function edit_categories(){
+        //check login
+        if(!$this->session->userdata('logged_in')){
+            redirect('/posts/');
+        }
         $data['categories'] = $this->categories_model->get_categories();
         $data['title']= 'Edit Category';
 
